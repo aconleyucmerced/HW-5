@@ -1,0 +1,245 @@
+---------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\Amanada Conley\Documents\Amanda\UC Merced\Soc 211\IPUMS\RA5.log
+  log type:  text
+ opened on:  14 Apr 2020, 18:41:27
+
+. 
+end of do-file
+
+. do "C:\Users\AMANAD~1\AppData\Local\Temp\STD1ee8_000000.tmp"
+
+. tab hcovany, nol
+
+ any health |
+  insurance |
+   coverage |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |  1,465,829        9.30        9.30
+          2 | 14,293,108       90.70      100.00
+------------+-----------------------------------
+      Total | 15,758,937      100.00
+
+. 
+. reg r_hcovany amerind educ ftotinc
+variable r_hcovany not found
+r(111);
+
+end of do-file
+
+r(111);
+
+. do "C:\Users\AMANAD~1\AppData\Local\Temp\STD1ee8_000000.tmp"
+
+. 
+. gen amerind=.
+(15,758,937 missing values generated)
+
+. 
+. recode amerind .=1 if racamind==2
+(amerind: 315645 changes made)
+
+. recode amerind .=0 if racamind==1
+(amerind: 15443292 changes made)
+
+. 
+. 
+. label define amerind 0 "Not American Indian" 1 "American Indian"
+
+. label values amerind amerind
+
+. 
+. tab amerind 
+
+            amerind |      Freq.     Percent        Cum.
+--------------------+-----------------------------------
+Not American Indian | 15,443,292       98.00       98.00
+    American Indian |    315,645        2.00      100.00
+--------------------+-----------------------------------
+              Total | 15,758,937      100.00
+
+. 
+. gen r_hcovany=.
+(15,758,937 missing values generated)
+
+. 
+. recode r_hcovany .=1 if hcovany==1
+(r_hcovany: 1465829 changes made)
+
+. recode r_hcovany .=0 if hcovany==2
+(r_hcovany: 14293108 changes made)
+
+. 
+. 
+. label define r_hcovany 0 "Have Health Coverage" 1 "No Health Coverage"
+
+. label values r_hcovany r_hcovany
+
+. 
+. tab r_hcovany 
+
+           r_hcovany |      Freq.     Percent        Cum.
+---------------------+-----------------------------------
+Have Health Coverage | 14,293,108       90.70       90.70
+  No Health Coverage |  1,465,829        9.30      100.00
+---------------------+-----------------------------------
+               Total | 15,758,937      100.00
+
+. 
+. tab amerind r_hcovany
+
+                    |       r_hcovany
+            amerind | Have Heal  No Health |     Total
+--------------------+----------------------+----------
+Not American Indian |14,035,619  1,407,673 |15,443,292 
+    American Indian |   257,489     58,156 |   315,645 
+--------------------+----------------------+----------
+              Total |14,293,108  1,465,829 |15,758,937 
+
+. 
+end of do-file
+
+. do "C:\Users\AMANAD~1\AppData\Local\Temp\STD1ee8_000000.tmp"
+
+. tab hcovany, nol
+
+ any health |
+  insurance |
+   coverage |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |  1,465,829        9.30        9.30
+          2 | 14,293,108       90.70      100.00
+------------+-----------------------------------
+      Total | 15,758,937      100.00
+
+. 
+. reg r_hcovany amerind educ ftotinc
+
+      Source |       SS           df       MS      Number of obs   =  15758937
+-------------+----------------------------------   F(3, 15758933)  =  57865.93
+       Model |  14485.7991         3  4828.59971   Prob > F        =    0.0000
+    Residual |  1314998.05  15758933  .083444612   R-squared       =    0.0109
+-------------+----------------------------------   Adj R-squared   =    0.0109
+       Total |  1329483.85  15758936  .084363808   Root MSE        =    .28887
+
+------------------------------------------------------------------------------
+   r_hcovany |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+     amerind |   .0877047   .0005199   168.71   0.000     .0866858    .0887237
+        educ |  -.0045578   .0000225  -202.64   0.000    -.0046019   -.0045137
+     ftotinc |   1.08e-08   3.42e-11   314.55   0.000     1.07e-08    1.08e-08
+       _cons |   .1127429   .0001565   720.29   0.000     .1124361    .1130497
+------------------------------------------------------------------------------
+
+. 
+. logit r_hcovany amerind educ ftotinc 
+
+Iteration 0:   log likelihood = -4876762.9  
+Iteration 1:   log likelihood = -4814765.8  
+Iteration 2:   log likelihood =   -4803878  
+Iteration 3:   log likelihood = -4803866.4  
+Iteration 4:   log likelihood = -4803866.4  
+
+Logistic regression                             Number of obs     = 15,758,937
+                                                LR chi2(2)        =  145792.95
+                                                Prob > chi2       =     0.0000
+Log likelihood = -4803866.4                     Pseudo R2         =     0.0149
+
+------------------------------------------------------------------------------
+   r_hcovany |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+     amerind |    .758789    .004714   160.97   0.000     .7495498    .7680283
+        educ |  -.0548258    .000269  -203.85   0.000    -.0553529   -.0542986
+     ftotinc |   9.31e-08   3.06e-10   303.91   0.000     9.25e-08    9.37e-08
+       _cons |  -2.050959    .001772 -1157.43   0.000    -2.054432   -2.047486
+------------------------------------------------------------------------------
+
+. 
+. display "OR for beta(r_hcovany) = e^.4803866 = " exp(.4803866)
+OR for beta(r_hcovany) = e^.4803866 = 1.6166993
+
+. 
+. 
+. 
+. *clearing old estimates*
+. eststo clear
+
+. 
+. *Base model
+. eststo m1: reg r_hcovany amerind educ ftotinc
+
+      Source |       SS           df       MS      Number of obs   =  15758937
+-------------+----------------------------------   F(3, 15758933)  =  57865.93
+       Model |  14485.7991         3  4828.59971   Prob > F        =    0.0000
+    Residual |  1314998.05  15758933  .083444612   R-squared       =    0.0109
+-------------+----------------------------------   Adj R-squared   =    0.0109
+       Total |  1329483.85  15758936  .084363808   Root MSE        =    .28887
+
+------------------------------------------------------------------------------
+   r_hcovany |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+     amerind |   .0877047   .0005199   168.71   0.000     .0866858    .0887237
+        educ |  -.0045578   .0000225  -202.64   0.000    -.0046019   -.0045137
+     ftotinc |   1.08e-08   3.42e-11   314.55   0.000     1.07e-08    1.08e-08
+       _cons |   .1127429   .0001565   720.29   0.000     .1124361    .1130497
+------------------------------------------------------------------------------
+
+. 
+. **>Estimating model 2<**
+. eststo m2: logit r_hcovany amerind educ ftotinc 
+
+Iteration 0:   log likelihood = -4876762.9  
+Iteration 1:   log likelihood = -4814765.8  
+Iteration 2:   log likelihood =   -4803878  
+Iteration 3:   log likelihood = -4803866.4  
+Iteration 4:   log likelihood = -4803866.4  
+
+Logistic regression                             Number of obs     = 15,758,937
+                                                LR chi2(2)        =  145792.95
+                                                Prob > chi2       =     0.0000
+Log likelihood = -4803866.4                     Pseudo R2         =     0.0149
+
+------------------------------------------------------------------------------
+   r_hcovany |      Coef.   Std. Err.      z    P>|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+     amerind |    .758789    .004714   160.97   0.000     .7495498    .7680283
+        educ |  -.0548258    .000269  -203.85   0.000    -.0553529   -.0542986
+     ftotinc |   9.31e-08   3.06e-10   303.91   0.000     9.25e-08    9.37e-08
+       _cons |  -2.050959    .001772 -1157.43   0.000    -2.054432   -2.047486
+------------------------------------------------------------------------------
+
+. 
+. 
+. esttab, stats(N, labels("N")) nobase noconstant cells(b(star fmt(2)) se(fmt(2) par)) legend starlevels(^ .1 * .05 ** .01 
+> *** .001) mlabels("OLS" "MLE") title("Odds ratio of ") collabels(none) eform
+
+Odds ratio of 
+--------------------------------------------
+                      (1)             (2)   
+                      OLS             MLE   
+--------------------------------------------
+main                                        
+amerind              1.09***         2.14***
+                   (0.00)          (0.01)   
+educ                 1.00***         0.95***
+                   (0.00)          (0.00)   
+ftotinc              1.00***         1.00***
+                   (0.00)          (0.00)   
+--------------------------------------------
+N             15758937.00     15758937.00   
+--------------------------------------------
+Exponentiated coefficients
+^ p<.1, * p<.05, ** p<.01, *** p<.001
+
+. 
+. 
+. 
+. 
+. 
+. 
+. 
+. 
+. 
+end of do-file
+
+. exit, clear
