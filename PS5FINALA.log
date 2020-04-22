@@ -1,0 +1,393 @@
+---------------------------------------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\Amanada Conley\Documents\Amanda\UC Merced\Soc 211\Week12\PS5FINALA.log
+  log type:  text
+ opened on:  21 Apr 2020, 20:37:41
+
+. 
+. 
+. 
+. **Question #2
+. 
+. pwcorr lfegenes lfesocty lfehrdwk lfechnce, sig
+
+             | lfegenes lfesocty lfehrdwk lfechnce
+-------------+------------------------------------
+    lfegenes |   1.0000 
+             |
+             |
+    lfesocty |   0.3592   1.0000 
+             |   0.0000
+             |
+    lfehrdwk |   0.4315   0.4298   1.0000 
+             |   0.0000   0.0000
+             |
+    lfechnce |   0.3635   0.3645   0.3888   1.0000 
+             |   0.0000   0.0000   0.0000
+             |
+
+. 
+. tab1 lfegenes lfesocty lfehrdwk lfechnce, nol
+
+-> tabulation of lfegenes  
+
+  SOME WITH |
+     BETTER |
+ GENES THAN |
+     OTHERS |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |        150        9.34        9.34
+          2 |        446       27.77       37.11
+          3 |        472       29.39       66.50
+          4 |        484       30.14       96.64
+          8 |         43        2.68       99.32
+          9 |         11        0.68      100.00
+------------+-----------------------------------
+      Total |      1,606      100.00
+
+-> tabulation of lfesocty  
+
+    SOCIETY |
+ GIVES SOME |
+ HEAD START |
+    & HOLDS |
+BACK OTHERS |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |        213       13.26       13.26
+          2 |        598       37.24       50.50
+          3 |        524       32.63       83.13
+          4 |        215       13.39       96.51
+          8 |         44        2.74       99.25
+          9 |         12        0.75      100.00
+------------+-----------------------------------
+      Total |      1,606      100.00
+
+-> tabulation of lfehrdwk  
+
+SOME PEOPLE |
+WORK HARDER |
+THAN OTHERS |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |        911       56.72       56.72
+          2 |        580       36.11       92.84
+          3 |         70        4.36       97.20
+          4 |         20        1.25       98.44
+          8 |         15        0.93       99.38
+          9 |         10        0.62      100.00
+------------+-----------------------------------
+      Total |      1,606      100.00
+
+-> tabulation of lfechnce  
+
+  LIFE IS A |
+  MATTER OF |
+     CHANCE |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |         55        3.42        3.42
+          2 |        250       15.57       18.99
+          3 |        591       36.80       55.79
+          4 |        668       41.59       97.38
+          8 |         32        1.99       99.38
+          9 |         10        0.62      100.00
+------------+-----------------------------------
+      Total |      1,606      100.00
+
+. 
+. 
+. 
+. 
+. 
+. 
+. **Creating a reverse of lfsocty_r and lfechnce_r so that they goes in the same direction where 4 is the highest level of 
+> individualism, will generate variable called revlfesocty_r, for instance
+. 
+. revrs lfesocty
+
+. tab revlfesocty, nol
+
+    SOCIETY |
+ GIVES SOME |
+ HEAD START |
+    & HOLDS |
+BACK OTHERS |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |         12        0.75        0.75
+          2 |         44        2.74        3.49
+          3 |        215       13.39       16.87
+          4 |        524       32.63       49.50
+          5 |        598       37.24       86.74
+          6 |        213       13.26      100.00
+------------+-----------------------------------
+      Total |      1,606      100.00
+
+. tab lfesocty
+
+  SOCIETY GIVES SOME |
+  HEAD START & HOLDS |
+         BACK OTHERS |      Freq.     Percent        Cum.
+---------------------+-----------------------------------
+      VERY IMPORTANT |        213       13.26       13.26
+           IMPORTANT |        598       37.24       50.50
+  SOMEWHAT IMPORTANT |        524       32.63       83.13
+NOT AT ALL IMPORTANT |        215       13.39       96.51
+                  DK |         44        2.74       99.25
+                  NA |         12        0.75      100.00
+---------------------+-----------------------------------
+               Total |      1,606      100.00
+
+. 
+. revrs lfechnce
+
+. tab revlfechnce, nol
+
+  LIFE IS A |
+  MATTER OF |
+     CHANCE |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          1 |         10        0.62        0.62
+          2 |         32        1.99        2.62
+          3 |        668       41.59       44.21
+          4 |        591       36.80       81.01
+          5 |        250       15.57       96.58
+          6 |         55        3.42      100.00
+------------+-----------------------------------
+      Total |      1,606      100.00
+
+. tab lfechnce
+
+ LIFE IS A MATTER OF |
+              CHANCE |      Freq.     Percent        Cum.
+---------------------+-----------------------------------
+      VERY IMPORTANT |         55        3.42        3.42
+           IMPORTANT |        250       15.57       18.99
+  SOMEWHAT IMPORTANT |        591       36.80       55.79
+NOT AT ALL IMPORTANT |        668       41.59       97.38
+                  DK |         32        1.99       99.38
+                  NA |         10        0.62      100.00
+---------------------+-----------------------------------
+               Total |      1,606      100.00
+
+. 
+. pwcorr lfegenes revlfesocty lfehrdwk revlfechnce, sig
+
+             | lfegenes revlfe~y lfehrdwk revlfe~e
+-------------+------------------------------------
+    lfegenes |   1.0000 
+             |
+             |
+ revlfesocty |  -0.2889   1.0000 
+             |   0.0000
+             |
+    lfehrdwk |   0.4315  -0.3140   1.0000 
+             |   0.0000   0.0000
+             |
+ revlfechnce |  -0.2557   0.2076  -0.1900   1.0000 
+             |   0.0000   0.0000   0.0000
+             |
+
+. 
+. 
+. 
+. 
+. **Question 3
+. 
+. 
+. 
+. 
+. 
+. factor lfegenes revlfesocty lfehrdwk revlfechnce
+(obs=1,606)
+
+Factor analysis/correlation                      Number of obs    =      1,606
+    Method: principal factors                    Retained factors =          1
+    Rotation: (unrotated)                        Number of params =          4
+
+    --------------------------------------------------------------------------
+         Factor  |   Eigenvalue   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      1.05006      1.08904            1.5124       1.5124
+        Factor2  |     -0.03899      0.06013           -0.0562       1.4563
+        Factor3  |     -0.09912      0.11855           -0.1428       1.3135
+        Factor4  |     -0.21767            .           -0.3135       1.0000
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(6)  =  697.66 Prob>chi2 = 0.0000
+
+Factor loadings (pattern matrix) and unique variances
+
+    ---------------------------------------
+        Variable |  Factor1 |   Uniqueness 
+    -------------+----------+--------------
+        lfegenes |   0.5922 |      0.6493  
+     revlfesocty |  -0.4740 |      0.7754  
+        lfehrdwk |   0.5786 |      0.6652  
+     revlfechnce |  -0.3741 |      0.8600  
+    ---------------------------------------
+
+. rotate, varimax
+
+Factor analysis/correlation                      Number of obs    =      1,606
+    Method: principal factors                    Retained factors =          1
+    Rotation: orthogonal varimax (Kaiser off)    Number of params =          4
+
+    --------------------------------------------------------------------------
+         Factor  |     Variance   Difference        Proportion   Cumulative
+    -------------+------------------------------------------------------------
+        Factor1  |      1.05006            .            1.5124       1.5124
+    --------------------------------------------------------------------------
+    LR test: independent vs. saturated:  chi2(6)  =  697.66 Prob>chi2 = 0.0000
+
+Rotated factor loadings (pattern matrix) and unique variances
+
+    ---------------------------------------
+        Variable |  Factor1 |   Uniqueness 
+    -------------+----------+--------------
+        lfegenes |   0.5922 |      0.6493  
+     revlfesocty |  -0.4740 |      0.7754  
+        lfehrdwk |   0.5786 |      0.6652  
+     revlfechnce |  -0.3741 |      0.8600  
+    ---------------------------------------
+
+Factor rotation matrix
+
+    -----------------------
+                 | Factor1 
+    -------------+---------
+         Factor1 |  1.0000 
+    -----------------------
+
+. loadingplot
+only one factor retained
+r(321);
+
+end of do-file
+
+r(321);
+
+. do "C:\Users\AMANAD~1\AppData\Local\Temp\STD5824_000000.tmp"
+
+. 
+. **Question 4
+. 
+. 
+. gen individualism=(lfegenes+revlfesocty+lfehrdwk+revlfechnce)/2
+
+. 
+. tab individualism
+
+individuali |
+         sm |      Freq.     Percent        Cum.
+------------+-----------------------------------
+        3.5 |          1        0.06        0.06
+          4 |         10        0.62        0.68
+        4.5 |         29        1.81        2.49
+          5 |        102        6.35        8.84
+        5.5 |        253       15.75       24.60
+          6 |        364       22.67       47.26
+        6.5 |        342       21.30       68.56
+          7 |        289       18.00       86.55
+        7.5 |        111        6.91       93.46
+          8 |         38        2.37       95.83
+        8.5 |         21        1.31       97.14
+          9 |         13        0.81       97.95
+        9.5 |          4        0.25       98.19
+         10 |         27        1.68       99.88
+       11.5 |          1        0.06       99.94
+       12.5 |          1        0.06      100.00
+------------+-----------------------------------
+      Total |      1,606      100.00
+
+. 
+. 
+. foreach var in individualism lfegenes revlfesocty lfehrdwk revlfechnce {
+  2. quietly replace `var'=`var'-1
+  3. quietly replace `var'=`var'/4 if `var'!=0
+  4. }
+
+. sum individualism lfegenes revlfesocty lfehrdwk revlfechnce
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+individual~m |      1,606    1.348615    .2499891       .625      2.875
+    lfegenes |      1,606    .5029577    .3418371          0          2
+ revlfesocty |      1,606    .8566314    .2540045          0       1.25
+    lfehrdwk |      1,606    .1502179    .2673248          0          2
+ revlfechnce |      1,606    .6874222    .2211002          0       1.25
+
+. 
+. 
+. quietly {
+
+. 
+. eststo clear
+
+. 
+. *Base model
+. eststo m1: regress prestg80 individualism, ro
+
+Linear regression                               Number of obs     =      1,526
+                                                F(1, 1524)        =      11.02
+                                                Prob > F          =     0.0009
+                                                R-squared         =     0.0071
+                                                Root MSE          =     13.176
+
+-------------------------------------------------------------------------------
+              |               Robust
+     prestg80 |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+--------------+----------------------------------------------------------------
+individualism |  -4.515796   1.360057    -3.32   0.001    -7.183577   -1.848015
+        _cons |   49.27732   1.863883    26.44   0.000     45.62127    52.93337
+-------------------------------------------------------------------------------
+
+. 
+. **>Estimating model 2<**
+. eststo m2: regress prestg80 lfegenes revlfesocty lfehrdwk revlfechnce, r
+
+Linear regression                               Number of obs     =      1,526
+                                                F(4, 1521)        =       6.93
+                                                Prob > F          =     0.0000
+                                                R-squared         =     0.0165
+                                                Root MSE          =     13.126
+
+------------------------------------------------------------------------------
+             |               Robust
+    prestg80 |      Coef.   Std. Err.      t    P>|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+    lfegenes |  -.1671411   1.228524    -0.14   0.892    -2.576922     2.24264
+ revlfesocty |   .2150863    1.41924     0.15   0.880    -2.568789    2.998961
+    lfehrdwk |  -4.679826   1.527734    -3.06   0.002    -7.676515   -1.683137
+ revlfechnce |  -6.483329    1.53025    -4.24   0.000    -9.484953   -3.481705
+       _cons |   48.22596   1.800819    26.78   0.000     44.69361    51.75831
+------------------------------------------------------------------------------
+
+. 
+. 
+. esttab, stats(N, labels("N")) nobase noconstant cells(b(star fmt(2)) se(fmt(2) par)) legend starlevels(^ .1 * .05 ** .01 
+> *** .001) mlabels("Scale" "No Scale") title("Comparison") collabels(none)
+
+Comparison
+--------------------------------------------
+                      (1)             (2)   
+                    Scale        No Scale   
+--------------------------------------------
+individual~m        -4.52***                
+                   (1.36)                   
+lfegenes                            -0.17   
+                                   (1.23)   
+revlfesocty                          0.22   
+                                   (1.42)   
+lfehrdwk                            -4.68** 
+                                   (1.53)   
+revlfechnce                         -6.48***
+                                   (1.53)   
+--------------------------------------------
+N                 1526.00         1526.00   
+--------------------------------------------
+^ p<.1, * p<.05, ** p<.01, *** p<.001
+
+. 
+. 
+. 
+. 
+end of do-file
+
+. exit, clear
